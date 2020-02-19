@@ -1,6 +1,6 @@
 generate_daily <- function(date = Sys.Date()) {
   fs::dir_create(date)
-  readme_yaml <- c("---", paste0("title: \"", as.character(date), "\""), "output: github_document", "---")
+  readme_yaml <- c("---", paste0("title: \"", as.character(date), "\""), "output: github_document", "---", "", "# - i know this one!", "", "```{r old, echo = TRUE}", "", "```", "", "# - new to me!", "", "```{r new, echo = TRUE}", "", "```")
   path <- paste0(date, "/README.Rmd")
   writeLines(readme_yaml, path)
   rstudioapi::navigateToFile(path)
