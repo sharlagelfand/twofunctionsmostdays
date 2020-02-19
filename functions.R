@@ -1,4 +1,6 @@
 generate_daily <- function(date = Sys.Date()) {
+  usethis::ui_info("Creating directory and README for {date}...")
+
   fs::dir_create(date)
   readme_yaml <- c("---", paste0("title: \"", as.character(date), "\""), "output: github_document", "---", "", "# - i know this one!", "", "```{r old, echo = TRUE}", "", "```", "", "# - new to me!", "", "```{r new, echo = TRUE}", "", "```")
   path <- paste0(date, "/README.Rmd")
@@ -24,9 +26,13 @@ update_repo_readme <- function(date = Sys.Date()) {
   all_to_add <- c(date_text, functions_text_and_link)
 
   write(all_to_add, file = "README.md", append = TRUE)
+
+  usethis::ui_done("README updated with functions from {date}: {glue::glue_collapse(functions_text, sep = ' and ')}!")
 }
 
 generate_carbon_images <- function(date = Sys.Date()) {
+  usethis::ui_info("Pulling function code and generating carbon images...")
+
   `%>%` <- magrittr::`%>%`
 
   date_readme_md <- readLines(paste0(date, "/README.md"))
@@ -60,4 +66,6 @@ generate_carbon_images <- function(date = Sys.Date()) {
       browser = getOption("browser")
     )
   }
+
+  usethis::ui_todo("Edit and save the images as you wish!")
 }
