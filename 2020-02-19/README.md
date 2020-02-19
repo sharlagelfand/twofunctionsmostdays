@@ -47,7 +47,7 @@ slide_dbl(x, sum, .before = 2)
     ## [1]  1  3  6  9 12
 
 ``` r
-# Set .complete to FALSE to only compute the sum if there are *actually* 2 values before - otherwise, return NA!
+# Set .complete to TRUE to only compute the sum if there are *actually* 2 values before - otherwise, return NA!
 slide_dbl(x, sum, .before = 2, .complete = TRUE)
 ```
 

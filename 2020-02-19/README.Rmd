@@ -33,6 +33,6 @@ x <- c(1, 2, 3, 4, 5)
 # Make a "sliding" version of the sum function, summing the current value and the 2 values prior to it, and return the results as a double vector
 slide_dbl(x, sum, .before = 2)
 
-# Set .complete to FALSE to only compute the sum if there are *actually* 2 values before - otherwise, return NA!
+# Set .complete to TRUE to only compute the sum if there are *actually* 2 values before - otherwise, return NA!
 slide_dbl(x, sum, .before = 2, .complete = TRUE)
 ```
