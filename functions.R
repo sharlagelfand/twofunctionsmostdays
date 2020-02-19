@@ -54,10 +54,10 @@ generate_carbon_images <- function(date = Sys.Date()) {
     purrr::map(~ carbonate::carbon$new(.x)) %>%
     purrr::map_chr(~ .x$uri())
 
-  for(i in seq_along(carbon_links)) {
-  utils::browseURL(
-    url = carbon_links[[i]],
-    browser = getOption("browser")
-  )
+  for (i in seq_along(carbon_links)) {
+    utils::browseURL(
+      url = carbon_links[[i]],
+      browser = getOption("browser")
+    )
   }
 }
