@@ -2,9 +2,26 @@ generate_daily <- function(date = Sys.Date()) {
   usethis::ui_info("Creating directory and README for {date}...")
 
   fs::dir_create(date)
-  readme_yaml <- c("---", paste0("title: \"", as.character(date), "\""), "output: github_document", "---", "", "# - i know this one!", "", "```{r old, echo = TRUE}", "", "```", "", "# - new to me!", "", "```{r new, echo = TRUE}", "", "```")
+  readme_contents <- c(
+    "---",
+    paste0("title: \"", as.character(date), "\""),
+    "output: github_document",
+    "---",
+    "",
+    "# - i know this one!",
+    "",
+    "```{r old, echo = TRUE}",
+    "",
+    "```",
+    "",
+    "# - new to me!",
+    "",
+    "```{r new, echo = TRUE}",
+    "",
+    "```"
+  )
   path <- paste0(date, "/README.Rmd")
-  writeLines(readme_yaml, path)
+  writeLines(readme_contents, path)
   rstudioapi::navigateToFile(path)
 }
 
