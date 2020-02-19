@@ -1,0 +1,38 @@
+---
+title: "2020-02-19"
+output: github_document
+---
+
+# `janitor::clean_names()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE}
+library(janitor)
+library(dplyr)
+
+df <- tibble(
+  Date = "2020-02-01",
+  `Dollars Earned` = 10,
+  `% Loss` = 5,
+  `2020 Total` = 100
+)
+
+# Clean up the column names, make them easier (and safer!) to use!
+clean_names(df)
+
+# The default is snake_case, but you can change that too:
+clean_names(df, case = "lower_camel")
+```
+
+# `slider::slide_dbl()` - new to me!
+
+```{r new, echo = TRUE}
+library(slider)
+
+x <- c(1, 2, 3, 4, 5)
+
+# Make a "sliding" version of the sum function, summing the current value and the 2 values prior to it, and return the results as a double vector
+slide_dbl(x, sum, .before = 2)
+
+# Set .complete to FALSE to only compute the sum if there are *actually* 2 values before - otherwise, return NA!
+slide_dbl(x, sum, .before = 2, .complete = TRUE)
+```
