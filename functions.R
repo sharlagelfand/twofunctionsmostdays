@@ -37,7 +37,7 @@ update_repo_readme <- function(date = Sys.Date()) {
   functions_link <- gsub(" ", "-", functions_link)
   functions_link <- paste0(base_link, "/", date, "#", functions_link)
 
-  date_text <- paste0("* ", date, ":")
+  date_text <- paste0("* ", date, " [(tweet)]()")
   functions_text_and_link <- paste0("    * [", functions_text, "](", functions_link, ")")
 
   all_to_add <- c(date_text, functions_text_and_link)
