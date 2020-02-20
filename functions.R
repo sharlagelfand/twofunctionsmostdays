@@ -74,7 +74,13 @@ generate_carbon_images <- function(date = Sys.Date()) {
   carbon_links <- functions_text %>%
     dplyr::group_split(function_type) %>%
     purrr::map(~ dplyr::pull(.x, value)) %>%
-    purrr::map(~ carbonate::carbon$new(.x))
+    purrr::map(~ carbonate::carbon$new(.x)) %>%
+    purrr::map(~ {
+      .x[["template"]] <- "a11y-dark"
+      .x[["padding_vertical"]] <- .x[["padding_horizontal"]] <- 10
+      .x[["font_size"]] <- "20"
+      .x
+    })
 
   for (i in seq_along(carbon_links)) {
     carbon_links[[i]]$browse()
