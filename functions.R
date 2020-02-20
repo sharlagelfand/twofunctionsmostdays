@@ -74,14 +74,10 @@ generate_carbon_images <- function(date = Sys.Date()) {
   carbon_links <- functions_text %>%
     dplyr::group_split(function_type) %>%
     purrr::map(~ dplyr::pull(.x, value)) %>%
-    purrr::map(~ carbonate::carbon$new(.x)) %>%
-    purrr::map_chr(~ .x$uri())
+    purrr::map(~ carbonate::carbon$new(.x))
 
   for (i in seq_along(carbon_links)) {
-    utils::browseURL(
-      url = carbon_links[[i]],
-      browser = getOption("browser")
-    )
+    carbon_links[[i]]$browse()
   }
 
   usethis::ui_todo("Edit and save the images as you wish!")
