@@ -1,0 +1,69 @@
+---
+title: "2020-02-20"
+output: github_document
+---
+
+# `forcats::fct_relevel()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE}
+library(forcats)
+library(dplyr)
+
+# Maybe you have a data set where things are ordered alphabetically, but that doesn't make sense!
+# You probably want "Total" to go last, after "Apple" and "Watermelon"
+df <- tribble(
+  ~Fruit, ~Sales,
+  "Apple", 10,
+  "Total", 30,
+  "Watermelon", 20
+)
+
+# forcats::fct_relevel() lets you reorder factor levels by hand!
+df <- df %>%
+  mutate(
+    Fruit = as_factor(Fruit),
+    Fruit = fct_relevel(Fruit, "Apple", "Watermelon", "Total")
+  )
+
+df %>%
+  arrange(Fruit)
+
+# Or, you can just choose which one you want to go last by setting `after = Inf`!
+df <- df %>%
+  mutate(Fruit = fct_relevel(Fruit, "Total", after = Inf))
+
+df %>%
+  arrange(Fruit)
+```
+
+# `forcats::fct_explicit_na()` - new to me!
+
+```{r new, echo = TRUE, message = FALSE}
+library(forcats)
+library(dplyr)
+
+# Say you have a factor with NA values, like Height:
+df <- tribble(
+  ~Height, ~Number,
+  "< 5 Feet", 10,
+  "> 5 Feet", 20,
+  NA, 2
+) %>%
+  mutate(Height = as_factor(Height))
+
+# The NA may be meaningful (e.g., height is missing), but it's not listed as a factor level!
+levels(df[["Height"]])
+
+# Use forcats::fct_explicit_na() to give a factor level to the NA:
+df_na <- df %>%
+  mutate(Height = fct_explicit_na(Height)) 
+
+# Then it appears as a level:
+levels(df_na[["Height"]])
+
+# You can change the name, too!
+df_na_2 <- df %>%
+  mutate(Height = fct_explicit_na(Height, na_level = "Unknown")) 
+
+levels(df_na_2[["Height"]])
+```

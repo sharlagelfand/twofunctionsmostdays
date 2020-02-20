@@ -8,3 +8,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-19 [(tweet)](https://twitter.com/sharlagelfand/status/1230213259736813569)
     * [janitor::clean_names()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-19#janitorclean_names---i-know-this-one)
     * [slider::slide_dbl()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-19#sliderslide_dbl---new-to-me)
+* 2020-02-20 [(tweet)]()
+    * [forcats::fct_relevel()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-20#forcatsfct_relevel---i-know-this-one)
+    * [forcats::fct_explicit_na()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-20#forcatsfct_explicit_na---new-to-me)
