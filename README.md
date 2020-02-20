@@ -1,5 +1,7 @@
 Sharing two #rstats functions most days - one I know and love, and one that's new to me!
 
+All code screenshots are made using [Carbon](https://carbon.now.sh/).
+
 * 2020-02-18 [(tweet)](https://twitter.com/sharlagelfand/status/1229984121239285761)
     * [scales::dollar()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-18#scalesdollar---i-know-this-one)
     * [tidyr::full_seq()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-18#tidyrfull_seq---new-to-me)
