@@ -25,26 +25,48 @@ generate_daily <- function(date = Sys.Date()) {
   rstudioapi::navigateToFile(path)
 }
 
-update_repo_readme <- function(date = Sys.Date()) {
+get_function_names <- function(date = Sys.Date()) {
   date_readme <- readLines(paste0(date, "/README.Rmd"))
 
   functions <- date_readme[grepl("# `", date_readme)]
   functions_split <- strsplit(functions, "`")
-  functions_text <- c(functions_split[[1]][[2]], functions_split[[2]][[2]])
 
+  c(functions_split[[1]][[2]], functions_split[[2]][[2]])
+}
+
+generate_function_links <- function(function_names, date = Sys.Date()) {
   base_link <- "https://github.com/sharlagelfand/twofunctionsmostdays/tree/master"
-  functions_link <- gsub("# `|`|::|\\(\\)|!", "", functions)
+  functions_link <- gsub("# `|`|::|\\(\\)|!", "", function_names)
   functions_link <- gsub(" ", "-", functions_link)
-  functions_link <- paste0(base_link, "/", date, "#", functions_link)
+  paste0(base_link, "/", date, "#", functions_link)
+}
+
+update_repo_readme <- function(date = Sys.Date()) {
+  function_names <- get_function_names(date)
+  function_links <- generate_function_links(function_names, date)
 
   date_text <- paste0("* ", date, " [(tweet)]()")
-  functions_text_and_link <- paste0("    * [", functions_text, "](", functions_link, ")")
+  function_names_and_links <- paste0("    * [", function_names, "](", function_links, ")")
 
-  all_to_add <- c(date_text, functions_text_and_link)
+  all_to_add <- c(date_text, function_names_and_links)
 
   write(all_to_add, file = "README.md", append = TRUE)
 
-  usethis::ui_done("README updated with functions from {date}: {glue::glue_collapse(functions_text, sep = ' and ')}!")
+  usethis::ui_done("README updated with functions from {date}: {glue::glue_collapse(function_names, sep = ' and ')}!")
+}
+
+generate_alt_text <- function(date = Sys.Date()) {
+  usethis::ui_info("Generating alt text for screenshots...")
+
+  function_names <- get_function_names(date)
+  function_links <- generate_function_links(function_names, date)
+
+  split_packages_and_functions <- strsplit(function_names, "::")
+  packages <- c(split_packages_and_functions[[1]][[1]], split_packages_and_functions[[2]][[1]])
+  functions <- c(split_packages_and_functions[[1]][[2]], split_packages_and_functions[[2]][[2]])
+  functions <- gsub("()", "", functions, fixed = TRUE)
+
+  glue::glue("A screenshot of R code showing how to use the {functions} function from the {packages} package. The code is available at {function_links}.")
 }
 
 generate_carbon_images <- function(date = Sys.Date()) {
