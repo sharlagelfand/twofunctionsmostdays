@@ -22,7 +22,7 @@ glue("I love eating {fruit}s, I eat {number} a day!")
 glue("I love eating {fruit}s, I eat {sample(1:10, length(fruit))} a day!")
 ```
 
-# `string::str_starts()` - new to me!
+# `stringr::str_starts()` - new to me!
 
 ```{r new, echo = TRUE, message = FALSE}
 library(stringr)

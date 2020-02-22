@@ -32,7 +32,7 @@ glue("I love eating {fruit}s, I eat {sample(1:10, length(fruit))} a day!")
     ## I love eating apples, I eat 10 a day!
     ## I love eating oranges, I eat 9 a day!
 
-# `string::str_starts()` - new to me\!
+# `stringr::str_starts()` - new to me\!
 
 ``` r
 library(stringr)
