@@ -14,3 +14,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-21 [(tweet)]()
     * [glue::glue()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-21#glueglue)
     * [stringr::str_starts()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-21#stringrstr_starts)
+* 2020-02-23 [(tweet)]()
+    * [visdat::vis_dat()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-23#visdatvis_dat)
+    * [prismatic::check_color_blindness()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-23#prismaticcheck_color_blindness)
