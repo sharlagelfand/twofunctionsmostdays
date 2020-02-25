@@ -1,0 +1,30 @@
+---
+title: "2020-02-24"
+output: github_document
+---
+
+# `emo::ji()` - i know this one!
+
+```{r old, echo = TRUE}
+library(emo) # Available on GitHub only: https://github.com/hadley/emo
+
+# Easily insert emojis into R (and especially into RMarkdown!)
+emo::ji("yum")
+
+# I like to namespace it (using emo::) since it spells "emoji" (do you want me to explain all the jokes?)
+# but you can just use ji() too!
+ji("white_check_mark")
+```
+
+# `janitor::excel_numeric_to_date()` - new to me!
+
+```{r new, echo = TRUE, message = FALSE}
+library(janitor)
+
+# Imagine (it's hard, I know) that you imported some data into R but couldn't quite save it from getting Excel™ed
+# And so you have the number of days since January 0, 1900
+dates <- c(43470, 42369, 42375, 41300)
+
+# Use excel_numeric_to_date() to recover as dates!
+excel_numeric_to_date(dates)
+```
