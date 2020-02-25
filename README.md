@@ -17,6 +17,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-23 [(tweet)](https://twitter.com/sharlagelfand/status/1231657192316690432)
     * [visdat::vis_dat()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-23#visdatvis_dat)
     * [prismatic::check_color_blindness()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-23#prismaticcheck_color_blindness)
-* 2020-02-24 [(tweet)]()
+* 2020-02-24 [(tweet)](https://twitter.com/sharlagelfand/status/1232135187808563201)
     * [emo::ji()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-24#emoji)
     * [janitor::excel_numeric_to_date()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-24#janitorexcel_numeric_to_date)
