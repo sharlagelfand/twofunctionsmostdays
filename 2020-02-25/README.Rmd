@@ -1,0 +1,78 @@
+---
+title: "2020-02-25"
+output: github_document
+---
+
+# `tidyr::complete()` - i know this one!
+
+```{r old, echo = TRUE}
+library(tidyr)
+
+df <- tribble(
+  ~Date, ~Fruit, ~Sold,
+  "2020-02-01", "Apple", 5,
+  "2020-02-01", "Banana", 1,
+  "2020-02-02", "Apple", 2
+)
+
+# Use complete() to complete the data set to include all combinations of Date and Fruit:
+df %>%
+  complete(Date, Fruit)
+
+# By default fills with NA, but you can set the value!
+df %>%
+  complete(Date, Fruit, fill = list(Sold = 0))
+
+# If the variables are factors, it will complete *all* levels (even those not in the data)
+library(forcats)
+
+# Making Fruit into a factor, and adding "Orange" as level
+df[["Fruit"]] <- fct_expand(df[["Fruit"]], "Orange")
+
+df %>%
+  complete(Date, Fruit)
+
+# Use nesting() to only complete levels that *are* in the data
+df %>%
+  complete(Date, nesting(Fruit))
+```
+
+# `tidyr::unpack()` - new to me!
+
+```{r new, echo = TRUE, error = TRUE}
+library(tidyr)
+
+# Take a data frame with nested "df-columns", like `fruit` and `hours`
+# This kind of data can occur e.g. from the output of an API
+df <- tibble(
+  date = c("2020-02-01", "2020-02-01", "2020-02-02"),
+  fruit = tibble(
+    item = c("Apple", "Banana", "Apple"),
+    n = c(1, 2, 1)
+  ),
+  hours = tibble(
+    employee = c("Owner", "Manager", "Owner"),
+    n = c(8, 4, 6)
+  )
+)
+
+df
+
+# Use unpack() to expand the df-columns out into individual columns
+df %>%
+  unpack(fruit)
+
+# If you want to unpack both, you need to specify the name repair (since one of the df-columns in fruit and hours have the same name)
+# Doing it without will give an error:
+df %>%
+  unpack(c(fruit, hours))
+
+# Setting names_repair as "unique" will ensure they're unique
+df %>%
+  unpack(c(fruit, hours), names_repair = "unique")
+
+# But those aren't very nice! It would be nice to know which n came from fruit and which from hours
+# Use the names_sep argument for that:
+df %>%
+  unpack(c(fruit, hours), names_sep = "_")
+```

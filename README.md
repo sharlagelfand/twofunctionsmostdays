@@ -20,3 +20,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-24 [(tweet)](https://twitter.com/sharlagelfand/status/1232135187808563201)
     * [emo::ji()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-24#emoji)
     * [janitor::excel_numeric_to_date()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-24#janitorexcel_numeric_to_date)
+* 2020-02-25 [(tweet)]()
+    * [tidyr::complete()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-25#tidyrcomplete)
+    * [tidyr::unpack()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-25#tidyrunpack)
