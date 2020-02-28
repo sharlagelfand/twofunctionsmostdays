@@ -36,9 +36,10 @@ get_function_names <- function(date = Sys.Date()) {
 
 generate_function_links <- function(function_names, date = Sys.Date()) {
   base_link <- "https://github.com/sharlagelfand/twofunctionsmostdays/tree/master"
+  suffix_link <- c("---i-know-this-one", "---new-to-me")
   functions_link <- gsub("# `|`|::|\\(\\)|!", "", function_names)
   functions_link <- gsub(" ", "-", functions_link)
-  paste0(base_link, "/", date, "#", functions_link)
+  paste0(base_link, "/", date, "#", functions_link, suffix_link)
 }
 
 update_repo_readme <- function(date = Sys.Date()) {
