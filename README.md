@@ -23,3 +23,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-25 [(tweet)](https://twitter.com/sharlagelfand/status/1232369103425482756)
     * [tidyr::complete()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-25#tidyrcomplete)
     * [tidyr::unpack()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-25#tidyrunpack)
+* 2020-02-27 [(tweet)]()
+    * [santoku::chop()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-27#santokuchop)
+    * [santoku::chop_quantiles()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020-02-27#santokuchop_quantiles)

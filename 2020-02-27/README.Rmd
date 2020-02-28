@@ -1,0 +1,55 @@
+---
+title: "2020-02-27"
+output: github_document
+---
+
+# `santoku::chop()` - i know this one!
+
+```{r old, echo = TRUE}
+library(santoku)
+
+# Generate 5 random numbers between 0 and 10
+set.seed(2020)
+x <- runif(n = 5, min = 0, max = 10)
+
+x
+
+# Using base R's cut to break into 0 to 5, 5 to 6, 6 to 10
+cut(x, breaks = c(0, 5, 6, 10))
+
+# Use santoku::chop() to do the same. The formatting of the labels is a nicer! Who doesn't like a space after a comma?
+chop(x, breaks = c(0, 5, 6, 10))
+
+# By default drops unused levels, but you can turn that off:
+chop(x, breaks = c(0, 5, 6, 10), drop = FALSE)
+
+# The intervals are closed on the left (cut is closed on the right), but you can change that, too!
+chop(x, breaks = brk_right(c(0, 5, 6, 10)), drop = FALSE)
+
+# You can really easily change the labels using presets:
+chop(x, breaks = c(0, 5, 6, 10), drop = FALSE, labels = lbl_dash())
+
+# Or by making your own!
+chop(x, breaks = c(0, 5, 6, 10), drop = FALSE, labels = lbl_format("%s to %s"))
+```
+
+# `santoku::chop_quantiles()` - new to me!
+
+```{r new, echo = TRUE}
+library(santoku)
+
+# Generate 5 numbers from 0 to 10
+set.seed(2020)
+x <- runif(n = 5, min = 0, max = 10)
+
+x
+
+# Use chop_quantiles to easily chop data into quantiles!
+chop_quantiles(x, probs = seq(0, 1, 0.2))
+
+# If you want to see the actual quantile ranges, ask for "raw" labels:
+chop_quantiles(x, probs = seq(0, 1, 0.2), lbl_intervals(raw = TRUE))
+
+# Comes with chop_deciles as a prebuilt, too!
+chop_deciles(x)
+```
