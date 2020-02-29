@@ -1,0 +1,53 @@
+---
+title: "2020-02-28"
+output: github_document
+---
+  
+# `fs::dir_tree()` - i know this one!
+  
+```{r old, echo = TRUE}
+library(fs)
+
+# Use dir_tree to nicely print and format your directory contents!
+dir_tree()
+
+# You can change the directory to use and the number of levels to recurse!
+# Setting recurse to 0 means it shows the files in the directory
+# but not any files in sub-directories, like 2020-02-18
+# If you set it to 1, it'll show the content in those directories too
+dir_tree("/Users/sharla/github/twofunctionsmostdays", recurse = 0)
+```
+
+```{r old-2, comment = NA}
+# If you're using RMarkdown, set `comment = NA` in the chunk options to just show the directory without any ##
+dir_tree()
+```
+
+# `fs::path_split()` - new to me!
+
+```{r new, echo = TRUE}
+library(fs)
+
+# Take two file paths
+dir <- "/Users/sharla/github/"
+subdir <- "/Users/sharla/github/twofunctionsmostdays/"
+
+# Check if one path is the other's parent
+path_has_parent(path = subdir, parent = dir)
+
+# Doesn't have to be the immediate parent, either! Grandparents too B)
+path_has_parent(path = subdir, parent = "/Users/sharla/")
+
+# But one path's child is not its parent (duh)
+path_has_parent(path = dir, parent = subdir)
+
+# This is all theoretical - the paths don't have to actually exist!
+fake_path <- paste0(
+  subdir,
+  paste0(sample(letters, 5), collapse = "")
+)
+
+fake_path
+
+path_has_parent(path = fake_path, parent = subdir)
+```
