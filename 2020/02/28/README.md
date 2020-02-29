@@ -38,7 +38,7 @@ dir_tree("/Users/sharla/github/twofunctionsmostdays", recurse = 1)
 
     ## /Users/sharla/github/twofunctionsmostdays
     ## ├── 2020
-    ## │   └── 2020-02
+    ## │   └── 02
     ## ├── DESCRIPTION
     ## ├── R
     ## │   └── functions.R
@@ -100,7 +100,7 @@ fake_path <- paste0(
 fake_path
 ```
 
-    ## [1] "/Users/sharla/github/twofunctionsmostdays/gaisv"
+    ## [1] "/Users/sharla/github/twofunctionsmostdays/kvmga"
 
 ``` r
 path_has_parent(path = fake_path, parent = subdir)
