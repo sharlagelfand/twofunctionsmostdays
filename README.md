@@ -26,6 +26,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-27 [(tweet)](https://twitter.com/sharlagelfand/status/1233200851495329793)
     * [santoku::chop()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/27#santokuchop---i-know-this-one)
     * [santoku::chop_quantiles()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/27#santokuchop_quantiles---new-to-me)
-* 2020-02-28 [(tweet)]()
+* 2020-02-28 [(tweet)](https://twitter.com/sharlagelfand/status/1233557470074806272)
     * [fs::dir_tree()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/28#fsdir_tree---i-know-this-one)
     * [fs::path_has_parent()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/28#fspath_has_parent---new-to-me)
