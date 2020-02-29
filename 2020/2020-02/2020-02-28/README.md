@@ -12,32 +12,43 @@ dir_tree()
 
     ## .
     ## ├── README.Rmd
-    ## └── README.md
+    ## ├── README.md
+    ## ├── fs-dir_tree.png
+    ## └── fs-path_has_parent.png
 
 ``` r
 # You can change the directory to use and the number of levels to recurse!
 # Setting recurse to 0 means it shows the files in the directory
-# but not any files in sub-directories, like 2020-02-18
-# If you set it to 1, it'll show the content in those directories too
+# but not any files in sub-directories, like 2020
 dir_tree("/Users/sharla/github/twofunctionsmostdays", recurse = 0)
 ```
 
     ## /Users/sharla/github/twofunctionsmostdays
-    ## ├── 2020-02-18
-    ## ├── 2020-02-19
-    ## ├── 2020-02-20
-    ## ├── 2020-02-21
-    ## ├── 2020-02-23
-    ## ├── 2020-02-24
-    ## ├── 2020-02-25
-    ## ├── 2020-02-27
-    ## ├── 2020-02-28
-    ## ├── 2020-02-29
+    ## ├── 2020
     ## ├── DESCRIPTION
     ## ├── R
     ## ├── README.md
     ## ├── ideas
     ## └── twofunctionsmostdays.Rproj
+
+``` r
+# If you set it to 1, it'll show the content in those directories too
+dir_tree("/Users/sharla/github/twofunctionsmostdays", recurse = 1)
+```
+
+    ## /Users/sharla/github/twofunctionsmostdays
+    ## ├── 2020
+    ## │   └── 2020-02
+    ## ├── DESCRIPTION
+    ## ├── R
+    ## │   └── functions.R
+    ## ├── README.md
+    ## ├── ideas
+    ## └── twofunctionsmostdays.Rproj
+
+``` r
+# And so on!
+```
 
 ``` r
 # If you're using RMarkdown, set `comment = NA` in the chunk options to just show the directory without any ##
@@ -46,7 +57,9 @@ dir_tree()
 
     .
     ├── README.Rmd
-    └── README.md
+    ├── README.md
+    ├── fs-dir_tree.png
+    └── fs-path_has_parent.png
 
 # `fs::path_split()` - new to me\!
 
@@ -87,7 +100,7 @@ fake_path <- paste0(
 fake_path
 ```
 
-    ## [1] "/Users/sharla/github/twofunctionsmostdays/dnxti"
+    ## [1] "/Users/sharla/github/twofunctionsmostdays/gaisv"
 
 ``` r
 path_has_parent(path = fake_path, parent = subdir)

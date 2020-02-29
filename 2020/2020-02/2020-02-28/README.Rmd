@@ -13,9 +13,13 @@ dir_tree()
 
 # You can change the directory to use and the number of levels to recurse!
 # Setting recurse to 0 means it shows the files in the directory
-# but not any files in sub-directories, like 2020-02-18
-# If you set it to 1, it'll show the content in those directories too
+# but not any files in sub-directories, like 2020
 dir_tree("/Users/sharla/github/twofunctionsmostdays", recurse = 0)
+
+# If you set it to 1, it'll show the content in those directories too
+dir_tree("/Users/sharla/github/twofunctionsmostdays", recurse = 1)
+
+# And so on!
 ```
 
 ```{r old-2, comment = NA}
