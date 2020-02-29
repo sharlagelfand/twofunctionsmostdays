@@ -29,3 +29,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-28 [(tweet)](https://twitter.com/sharlagelfand/status/1233557470074806272)
     * [fs::dir_tree()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/28#fsdir_tree---i-know-this-one)
     * [fs::path_has_parent()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/28#fspath_has_parent---new-to-me)
+* 2020-02-29 [(tweet)](https://twitter.com/sharlagelfand/status/1233749698164535297)
+    * [lubridate::`%m+%`](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/29#lubridatem----i-know-this-one)
+    * [lubridate::leap_year()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/29#lubridateleap_year---new-to-me)
