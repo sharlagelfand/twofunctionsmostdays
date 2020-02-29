@@ -27,7 +27,7 @@ dir_tree("/Users/sharla/github/twofunctionsmostdays", recurse = 1)
 dir_tree()
 ```
 
-# `fs::path_split()` - new to me!
+# `fs::path_has_parent()` - new to me!
 
 ```{r new, echo = TRUE}
 library(fs)

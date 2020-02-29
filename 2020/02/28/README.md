@@ -61,7 +61,7 @@ dir_tree()
     ├── fs-dir_tree.png
     └── fs-path_has_parent.png
 
-# `fs::path_split()` - new to me\!
+# `fs::path_has_parent()` - new to me\!
 
 ``` r
 library(fs)
@@ -100,7 +100,7 @@ fake_path <- paste0(
 fake_path
 ```
 
-    ## [1] "/Users/sharla/github/twofunctionsmostdays/kvmga"
+    ## [1] "/Users/sharla/github/twofunctionsmostdays/gyjxc"
 
 ``` r
 path_has_parent(path = fake_path, parent = subdir)
