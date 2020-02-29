@@ -1,7 +1,7 @@
 generate_daily <- function(date = Sys.Date()) {
   usethis::ui_info("Creating directory and README for {date}...")
 
-  fs::dir_create(date)
+  fs::dir_create(date_dir(date))
   readme_contents <- c(
     "---",
     paste0("title: \"", as.character(date), "\""),
@@ -20,13 +20,13 @@ generate_daily <- function(date = Sys.Date()) {
     "",
     "```"
   )
-  path <- paste0(date, "/README.Rmd")
+  path <- paste0(date_dir(date), "/README.Rmd")
   writeLines(readme_contents, path)
   rstudioapi::navigateToFile(path)
 }
 
 get_function_names <- function(date = Sys.Date()) {
-  date_readme <- readLines(paste0(date, "/README.Rmd"))
+  date_readme <- readLines(paste0(date_dir(date), "/README.Rmd"))
 
   functions <- date_readme[grepl("# `", date_readme)]
   functions_split <- strsplit(functions, "`")
@@ -39,7 +39,7 @@ generate_function_links <- function(function_names, date = Sys.Date()) {
   suffix_link <- c("---i-know-this-one", "---new-to-me")
   functions_link <- gsub("# `|`|::|\\(\\)|!", "", function_names)
   functions_link <- gsub(" ", "-", functions_link)
-  paste0(base_link, "/", date, "#", functions_link, suffix_link)
+  paste0(base_link, "/", date_dir(date), "#", functions_link, suffix_link)
 }
 
 update_repo_readme <- function(date = Sys.Date()) {
@@ -75,7 +75,7 @@ generate_carbon_images <- function(date = Sys.Date()) {
 
   `%>%` <- magrittr::`%>%`
 
-  date_readme_md <- readLines(paste0(date, "/README.md"))
+  date_readme_md <- readLines(paste0(date_dir(date), "/README.md"))
 
   functions_text <- date_readme_md %>%
     tibble::as_tibble() %>%
@@ -110,4 +110,8 @@ generate_carbon_images <- function(date = Sys.Date()) {
   }
 
   usethis::ui_todo("Edit and save the images as you wish!")
+}
+
+date_dir <- function(date = Sys.Date()) {
+  stringr::str_replace_all(date, "-", "/")
 }
