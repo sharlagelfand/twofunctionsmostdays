@@ -32,3 +32,6 @@ All code screenshots are made using [Carbon](https://carbon.now.sh/).
 * 2020-02-29 [(tweet)](https://twitter.com/sharlagelfand/status/1233749698164535297)
     * [lubridate::`%m+%`](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/29#lubridatem----i-know-this-one)
     * [lubridate::leap_year()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/29#lubridateleap_year---new-to-me)
+* 2020-03-02 [(tweet)]()
+    * [dplyr::group_split()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/02#dplyrgroup_split---i-know-this-one)
+    * [dplyr::group_map()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/02#dplyrgroup_map---new-to-me)

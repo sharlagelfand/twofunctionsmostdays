@@ -1,0 +1,53 @@
+---
+title: "2020-03-02"
+output: github_document
+---
+
+# `dplyr::group_split()` - i know this one! 
+
+```{r old, echo = TRUE, message = FALSE}
+library(dplyr)
+
+releases_70s <- tribble(
+  ~band, ~album, ~us_chart_peak,
+  "Talking Heads", "Talking Heads: 77", 97,
+  "Talking Heads", "Fear of Music", 21,
+  "Talking Heads", "More Songs About Buildings and Food", 29,
+  "Devo", "Q: Are We Not Men? A: We Are Devo!", 78,
+  "Devo", "Duty Now for the Future", 73
+)
+
+# Use group_split() to split a grouped data frame into a list
+releases_70s %>%
+  group_by(band) %>%
+  group_split()
+
+# You can specify the grouping in group_split() instead, and if you want to drop the grouping variables, set keep = FALSE
+releases_70s %>%
+  group_split(band, keep = FALSE)
+```
+
+# `dplyr::group_map()` - new to me! 
+
+```{r new, echo = TRUE, message = FALSE}
+library(dplyr)
+
+releases_70s <- tribble(
+  ~band, ~album, ~us_chart_peak,
+  "Talking Heads", "Talking Heads: 77", 97,
+  "Talking Heads", "Fear of Music", 21,
+  "Talking Heads", "More Songs About Buildings and Food", 29,
+  "Devo", "Q: Are We Not Men? A: We Are Devo!", 78,
+  "Devo", "Duty Now for the Future", 73
+)
+
+# Use group_map() just like purrr::map() but to split a data frame into a list by groups, and apply a function to that list! Bonus: no loading purrr required!
+releases_70s %>%
+  group_by(band) %>%
+  group_map(~ glue::glue("'{.x[['album']]}' hit {.x[['us_chart_peak']]} in the US charts!"))
+
+# group_map() has `keep = FALSE` by default - set it TRUE if you need it!
+releases_70s %>%
+  group_by(band) %>%
+  group_map(~ glue::glue("{.x[['band']]}'s '{.x[['album']]}' hit {.x[['us_chart_peak']]} in the US charts!"), keep = TRUE)
+```
