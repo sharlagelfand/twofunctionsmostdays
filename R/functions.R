@@ -4,35 +4,37 @@ generate_daily <- function(date = Sys.Date()) {
   fs::dir_create(date_dir(date))
   path <- paste0(date_dir(date), "/README.Rmd")
 
-  if(fs::file_exists(path)) {
+  if (fs::file_exists(path)) {
     overwrite <- usethis::ui_yeah("The README for {date} already exists. Want to overwrite it?")
   } else {
     overwrite <- TRUE
   }
 
   if (overwrite) {
-  usethis::ui_done("Ok, starting the day's over!")
-  readme_contents <- c(
-    "---",
-    paste0("title: \"", as.character(date), "\""),
-    "output: github_document",
-    "---",
-    "",
-    "# - i know this one!",
-    "",
-    "```{r old, echo = TRUE}",
-    "",
-    "```",
-    "",
-    "# - new to me!",
-    "",
-    "```{r new, echo = TRUE}",
-    "",
-    "```"
-  )
-  writeLines(readme_contents, path)
-  rstudioapi::navigateToFile(path)
-  } else {usethis::ui_done("Ok, not overwriting then!")}
+    usethis::ui_done("Ok, starting the day's over!")
+    readme_contents <- c(
+      "---",
+      paste0("title: \"", as.character(date), "\""),
+      "output: github_document",
+      "---",
+      "",
+      "# - i know this one!",
+      "",
+      "```{r old, echo = TRUE}",
+      "",
+      "```",
+      "",
+      "# - new to me!",
+      "",
+      "```{r new, echo = TRUE}",
+      "",
+      "```"
+    )
+    writeLines(readme_contents, path)
+    rstudioapi::navigateToFile(path)
+  } else {
+    usethis::ui_done("Ok, not overwriting then!")
+  }
 }
 
 get_function_names <- function(date = Sys.Date()) {
