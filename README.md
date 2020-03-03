@@ -3,7 +3,7 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
 
-* 2020-03-03 [(tweet)]()
+* 2020-03-03 [(tweet)](https://twitter.com/sharlagelfand/status/1234957922389700615)
     * [tibble::new_tibble()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/03#tibblenew_tibble---i-know-this-one)
     * [sloop::s3_dispatch()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/03#sloops3_dispatch---new-to-me)
 * 2020-03-02 [(tweet)](https://twitter.com/sharlagelfand/status/1234604638122520578)
