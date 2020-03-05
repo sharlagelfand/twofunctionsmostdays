@@ -1,0 +1,68 @@
+---
+title: "2020-03-05"
+output: github_document
+---
+
+# `rtweet::search_tweets()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE}
+library(rtweet)
+library(dplyr)
+
+# Search for tweets with #TwoFunctionsMostDays hashtag!
+# Only searches last 6-9 days of tweets
+tfmd <- search_tweets("#TwoFunctionsMostDays", n = 25, include_rts = FALSE)
+
+nrow(tfmd)
+
+# Comes with a *lot* of data. Probably most interesting:
+tfmd %>%
+  select(screen_name, created_at, text, favorite_count, retweet_count) %>%
+  head()
+
+# Quick count of tweeters
+tfmd %>%
+  count(screen_name, sort = TRUE)
+
+# Mean favourites/retweets
+tfmd %>%
+  filter(screen_name == "sharlagelfand") %>%
+  summarise_at(vars(favorite_count, retweet_count), mean)
+```
+
+# `purrr::set_names()` - new to me!
+
+```{r new, echo = TRUE, message = FALSE}
+library(purrr)
+
+# You can use set_names() on a ton of different objects!
+
+# On a data frame:
+data.frame(a = 1, b = 2) %>%
+  set_names(c("cat", "dog"))
+
+# On a list:
+list("a", "b") %>%
+  set_names(c("a", "b"))
+
+# On a vector:
+c(1, 2) %>%
+  set_names(c("a", "b"))
+
+# If you don't pass anything to set_names(), it names it by the contents:
+list(x = c("a", "b"), y = c("c", "d")) %>%
+  set_names()
+
+# If you pass NULL, it removes existing names:
+list(x = c("a", "b"), y = c("c", "d")) %>%
+  set_names(NULL)
+
+# If there are already names, you can use a function to transform the names
+data.frame(a = 1, b = 2) %>%
+  set_names(toupper)
+
+list(a = 1, b = 2) %>%
+  set_names(paste0, "_element")
+
+# pssst: technically set_names() is from rlang and just imported into purrr, but loading purrr gave me %>% too, and everyone seemed to think it was from purrr already. win-win!
+```
