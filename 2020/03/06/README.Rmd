@@ -1,0 +1,85 @@
+---
+title: "2020-03-06"
+output: github_document
+---
+
+# `dplyr::summarise_at()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE}
+library(dplyr)
+
+df <- tribble(
+  ~date,        ~temperature, ~precipitation, ~humidity,
+  "2020-03-06", 3,            0.60,           0.76,
+  "2020-03-07", 3,               0,           0.57,
+  "2020-03-08", 9,               0,           0.57,
+  "2020-03-09", 11,           0.30,           0.69
+)
+
+# Use summarise_at() to summarise variables by referring to them by name
+df %>%
+  summarise_at(vars(temperature, precipitation), mean)
+
+# If you want to use more than one summary function, pass a list of functions:
+df %>%
+  summarise_at(vars(temperature, precipitation), list(mean = mean, max = max))
+
+# Use summarise_if() to summarise variables meeting a specific criteria:
+df %>%
+  summarise_if(is.numeric, min)
+
+# Use summarise_all() to summarise all variables!
+df %>%
+  summarise_all(as.character)
+
+# mutate() versions exist too!
+```
+
+# `dplyr::across()` - new to me!
+
+```{r new, echo = TRUE, message = FALSE, error = TRUE}
+library(dplyr)
+packageVersion("dplyr") # I'm on dev! Install from https://github.com/tidyverse/dplyr
+
+df <- tribble(
+  ~date,        ~temperature, ~precipitation, ~humidity,
+  "2020-03-06", 3,            0.60,           0.76,
+  "2020-03-07", 3,               0,           0.57,
+  "2020-03-08", 9,               0,           0.57,
+  "2020-03-09", 11,           0.30,           0.69
+)
+
+# Sorry, but the summarise_() and mutate_() scoped functions are cancelled!
+# Let's use across() instead :)
+
+# Refer to variables by name using c() instead of vars():
+df %>%
+  summarise(across(c(temperature, precipitation), mean))
+
+# To summarise variables meeting a specific condition:
+df %>%
+  summarise(across(is.numeric, max))
+
+# Pass multiple functions the same way!
+df %>%
+  summarise(across(is.numeric, list(min = min, max = max)))
+
+# You can control how the output is named, too!!!!
+df %>%
+  summarise(across(is.numeric, min, names = "min_{col}"))
+
+df %>%
+  summarise(across(c(temperature, humidity),
+    list(mean = mean, sd = sd),
+    names = "{fn}_of_{col}"
+  ))
+
+# The default is to summarise everything (like summarise_all)
+# Make sure to specify the function under the `fns` argument if you want that
+df %>%
+  summarise(across(fns = as.character))
+
+# otherwise it'll try to pass it to the first argument, `cols`!
+df %>%
+  summarise(across(as.character))
+```
