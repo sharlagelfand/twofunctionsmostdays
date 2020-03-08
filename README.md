@@ -2,6 +2,10 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+
+* 2020-03-08 [(tweet)](https://twitter.com/sharlagelfand/status/1236728185074614272)
+    * [lubridate::dst()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/08#lubridatedst---i-know-this-one)
+    * [lubridate::dhours()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/08#lubridatedhours---new-to-me)
 * 2020-03-06 [(tweet)](https://twitter.com/sharlagelfand/status/1236025221586579459)
     * [dplyr::summarise_at()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/06#dplyrsummarise_at---i-know-this-one)
     * [dplyr::across()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/06#dplyracross---new-to-me)
