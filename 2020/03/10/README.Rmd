@@ -1,0 +1,87 @@
+---
+title: "2020-03-10"
+output: github_document
+---
+
+# `janitor::tabyl()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE}
+library(janitor)
+library(tibble)
+
+grades <- tribble(
+  ~student, ~course, ~grade,
+  1, "Statistics", "A",
+  2, "Statistics", "B+",
+  3, "Statistics", "A-",
+  1, "Calculus", "A-",
+  2, "Calculus", "A-"
+)
+
+# Use tabyl to easily count a variable
+grades %>%
+  tabyl(grade)
+
+# You can pretty up percentages, too!
+grades %>%
+  tabyl(grade) %>%
+  adorn_pct_formatting()
+
+# And add a total row
+grades %>%
+  tabyl(grade) %>%
+  adorn_totals("row")
+
+# Of course, it works on more than one variable
+grades %>%
+  tabyl(course, grade)
+
+# Convert to percents, by row is the default:
+grades %>%
+  tabyl(course, grade) %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting()
+
+# Or do by col:
+grades %>%
+  tabyl(course, grade) %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting()
+
+# Or by the total
+grades %>%
+  tabyl(course, grade) %>%
+  adorn_percentages("all") %>%
+  adorn_pct_formatting()
+
+# Show percents and counts
+grades %>%
+  tabyl(course, grade) %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting() %>%
+  adorn_ns("front")
+```
+
+# `janitor::adorn_rounding()` - new to me!
+
+```{r new, echo = TRUE, message = FALSE}
+library(janitor)
+library(tibble)
+
+usd_to_cad <- tribble(
+  ~date, ~exchange_rate_close,
+  "2020-03-05", 1.3404,
+  "2020-03-06", 1.3421,
+  "2020-03-07", 1.3424,
+  "2020-03-08", 1.3599,
+  "2020-03-09", 1.3664
+)
+
+# Use adorn_rounding to round numeric columns
+usd_to_cad %>%
+  adorn_rounding()
+
+# Defaults to one digit, but you can change it!
+usd_to_cad %>%
+  adorn_rounding(digits = 2)
+```

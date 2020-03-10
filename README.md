@@ -2,7 +2,9 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
-
+* 2020-03-10 [(tweet)](https://twitter.com/sharlagelfand/status/1237449765723480064)
+    * [janitor::tabyl()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/10#janitortabyl---i-know-this-one)
+    * [janitor::adorn_rounding()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/10#janitoradorn_rounding---new-to-me)
 * 2020-03-08 [(tweet)](https://twitter.com/sharlagelfand/status/1236728185074614272)
     * [lubridate::dst()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/08#lubridatedst---i-know-this-one)
     * [lubridate::dhours()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/08#lubridatedhours---new-to-me)
