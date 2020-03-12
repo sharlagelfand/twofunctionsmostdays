@@ -1,0 +1,58 @@
+---
+title: "2020-03-11"
+output: github_document
+---
+
+# `tidyr::separate()` - i know this one!
+
+```{r old, echo = TRUE}
+library(tidyr)
+
+df <- tribble(
+  ~description, ~sales,
+  "fruit_apple_red", 1,
+  "fruit_banana", 2,
+  "vegetable_carrot", 3,
+  "laptop", 1
+)
+
+# Use separate() to one column into multiple, based on a separator
+df %>%
+  separate(description, into = c("category", "item"), sep = "_")
+
+# If there are more values than expected (e.g. in fruit_apple_red, which is separated into fruit, apple, and red) it throws a warning
+# Turn that off with extra = "drop"
+# If values don't contain as many pieces as expected (i.e., two - category, and item) it throws a warning and fills from the right (i.e., the earlier columns are filled in first)
+# Turn off the warning with fill = "right"
+df %>%
+  separate(description, into = c("category", "item"), extra = "drop", fill = "right")
+
+# It's smart and can auto-detect the separator pretty well, so you don't always have to specify it!
+
+# If you want to fill in the later columns instead, opt to fill from the left:
+df %>%
+  separate(description, into = c("category", "item"), extra = "drop", fill = "left")
+```
+
+# `tidyr::unite()` - new to me!
+
+```{r new, echo = TRUE}
+library(tidyr)
+
+df <- tribble(
+  ~category, ~item, ~sales,
+  "fruit", "apple", 1,
+  "fruit", "banana", 2,
+  "laptop", NA_character_, 1
+)
+
+# Use unite() to combine multiple columns!
+# Combine category and item into "description", separated by "_" (the default)
+df %>%
+  unite(col = "description", category, item)
+
+# Doesn't remove NAs by default, so turn that on to avoid "laptop_NA"
+# You can separate by whatever you want, too!
+df %>%
+  unite(col = "description", category, item, sep = ".", na.rm = TRUE)
+```
