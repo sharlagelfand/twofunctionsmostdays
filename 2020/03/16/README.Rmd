@@ -1,0 +1,95 @@
+---
+title: "2020-03-16"
+output: github_document
+---
+
+# `janitor::get_dupes()` - i know this one!
+
+```{r old, echo = TRUE}
+library(janitor, warn.conflicts = FALSE)
+library(tibble)
+
+df <- tribble(
+  ~id, ~date, ~store_id, ~sales,
+  1, "2020-03-01", 1, 100,
+  2, "2020-03-01", 2, 100,
+  3, "2020-03-01", 3, 150,
+  4, "2020-03-02", 1, 110,
+  5, "2020-03-02", 3, 101
+)
+
+# Use janitor::get_dupes() to get rows for values of the indicated variables appear more than once
+# Rows for values of store_id that aren't unique
+df %>%
+  get_dupes(store_id)
+
+# Duplicates of date
+df %>%
+  get_dupes(date)
+
+# Check for no duplication of store_id and date
+df %>%
+  get_dupes(date, store_id)
+
+# Check that id is unique:
+df %>%
+  get_dupes(id)
+
+# If nothing is supplied, checks all variables
+df %>%
+  get_dupes()
+```
+
+# `janitor::remove_constant()` - new to me!
+
+```{r new, echo = TRUE}
+library(janitor)
+library(tibble)
+
+df <- tribble(
+  ~id, ~date, ~store_id, ~sales,
+  1, "2020-03-01", 1, 100,
+  2, "2020-03-01", 2, 100,
+  3, "2020-03-01", 3, 150
+)
+
+# Use janitor::remove_constant() to remove columns that are constant:
+df %>%
+  remove_constant()
+
+# By default, doesn't consider NA to make the column constant.
+tribble(
+  ~id, ~date, ~store_id, ~sales,
+  1, "2020-03-01", 1, 100,
+  2, "2020-03-01", 2, 100,
+  3, NA_character_, 3, 150
+) %>%
+  remove_constant()
+
+# Set na.rm = TRUE if you want it to:
+tribble(
+  ~id, ~date, ~store_id, ~sales,
+  1, "2020-03-01", 1, 100,
+  2, "2020-03-01", 2, 100,
+  3, NA_character_, 3, 150
+) %>%
+  remove_constant(na.rm = TRUE)
+
+# Bonus: use remove_empty() to remove rows or columns that are all NA
+tribble(
+  ~id, ~date, ~store_id, ~sales,
+  1, NA_character_, 1, 100,
+  2, NA_character_, 2, 100,
+  3, NA_character_, 3, 150
+) %>%
+  remove_empty("cols")
+
+tribble(
+  ~id, ~date, ~store_id, ~sales,
+  1, "2020-03-01", 1, 100,
+  2, "2020-03-01", 2, 100,
+  3, "2020-03-01", 3, 150,
+  NA_real_, NA_character_, NA_real_, NA_real_
+) %>%
+  remove_empty("rows")
+```

@@ -2,6 +2,9 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+* 2020-03-16 [(tweet)](https://twitter.com/sharlagelfand/status/1239658945528172545)
+    * [janitor::get_dupes()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/16#janitorget_dupes---i-know-this-one)
+    * [janitor::remove_constant()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/16#janitorremove_constant---new-to-me)
 * 2020-03-11 [(tweet)](https://twitter.com/sharlagelfand/status/1237902172316196866)
     * [tidyr::separate()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/11#tidyrseparate---i-know-this-one)
     * [tidyr::unite()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/11#tidyrunite---new-to-me)
