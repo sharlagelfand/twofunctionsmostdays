@@ -11,7 +11,9 @@ generate_daily <- function(date = Sys.Date()) {
   }
 
   if (overwrite) {
-    usethis::ui_done("Ok, starting the day's over!")
+    if(fs::file_exists(path)) {
+      usethis::ui_done("Ok, starting the day's over!")
+    }
     readme_contents <- c(
       "---",
       paste0("title: \"", as.character(date), "\""),
