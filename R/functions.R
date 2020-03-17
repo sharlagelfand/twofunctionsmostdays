@@ -56,11 +56,11 @@ generate_function_links <- function(function_names, date = Sys.Date()) {
   paste0(base_link, "/", date_dir(date), "#", functions_link, suffix_link)
 }
 
-update_repo_readme <- function(date = Sys.Date()) {
+update_repo_readme <- function(date = Sys.Date(), tweet_link = NULL) {
   function_names <- get_function_names(date)
   function_links <- generate_function_links(function_names, date)
 
-  date_text <- paste0("* ", date, " [(tweet)]()")
+  date_text <- paste0("* ", date, " [(tweet)](", ifelse(is.null(tweet_link), "", tweet_link), ")")
   function_names_and_links <- paste0("    * [", function_names, "](", function_links, ")")
 
   all_to_add <- c(date_text, function_names_and_links)
