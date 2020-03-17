@@ -65,7 +65,14 @@ update_repo_readme <- function(date = Sys.Date()) {
 
   all_to_add <- c(date_text, function_names_and_links)
 
-  write(all_to_add, file = "README.md", append = TRUE)
+  # Add to the fifth line of README, after intro
+  readme <- readLines("README.md")
+  readme_intro <- readme[1:4]
+  readme_links <- readme[5:length(readme)]
+
+  readme_new <- c(readme_intro, all_to_add, readme_links)
+
+  write(readme_new, file = "README.md")
 
   usethis::ui_done("README updated with functions from {date}: {glue::glue_collapse(function_names, sep = ' and ')}!")
 }
