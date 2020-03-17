@@ -1,0 +1,71 @@
+---
+title: "2020-03-17"
+output: github_document
+---
+
+# `dplyr::bind_rows()` - i know this one!
+
+```{r old, echo = TRUE, error = TRUE}
+library(dplyr, warn.conflicts = FALSE)
+
+df1 <- tribble(
+  ~a, ~b,
+  1, 2
+)
+
+df2 <- tribble(
+  ~b, ~c,
+  3, 4
+)
+
+# You can't bind together two data frames with different columns using rbind!!
+rbind(df1, df2)
+
+# But you can with bind_rows()!! Any missing data is just given an NA
+bind_rows(df1, df2)
+
+# If you have a list of data frames, use bind_rows() to combine them:
+df_list <- list(
+  df1 = df1,
+  df2 = df2
+)
+
+bind_rows(df_list)
+
+# You can choose to have the list element name as a column, too:
+bind_rows(df_list, .id = "source")
+```
+
+# `dplyr::n_groups()` - new to me!
+
+```{r new, echo = TRUE}
+library(dplyr, warn.conflicts = FALSE)
+
+df <- tribble(
+  ~id, ~date, ~store_id, ~sales,
+  1, "2020-03-01", 1, 100,
+  2, "2020-03-01", 2, 100,
+  3, "2020-03-01", 3, 150,
+  4, "2020-03-02", 1, 110,
+  5, "2020-03-02", 3, 101
+)
+
+# Want information on the grouping of a data frame?
+df_grouped <- df %>%
+  group_by(date)
+
+# Use is_grouped_df() to see if it's grouped
+is_grouped_df(df)
+is_grouped_df(df_grouped)
+
+# Use n_groups to see the *number* of groups (there are two dates, so two groups)
+n_groups(df_grouped)
+
+# group_vars() to get the grouping variables as a character
+group_vars(df_grouped)
+
+# and groups() to get them as a symbol
+groups(df_grouped)
+
+# and more! go explore!
+```

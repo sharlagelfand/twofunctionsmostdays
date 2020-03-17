@@ -9,7 +9,7 @@
 * 2020-02-20 [(tweet)](https://twitter.com/sharlagelfand/status/1230546703645904896)
     * [forcats::fct_relevel()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/20#forcatsfct_relevel---i-know-this-one)
     * [forcats::fct_explicit_na()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/20#forcatsfct_explicit_na---new-to-me)
-* 2020-02-21 [(tweet)]()
+* 2020-02-21 [(tweet)](https://twitter.com/sharlagelfand/status/1230973074306215937)
     * [glue::glue()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/21#glueglue---i-know-this-one)
     * [stringr::str_starts()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/02/21#stringrstr_starts---new-to-me)
 * 2020-02-23 [(tweet)](https://twitter.com/sharlagelfand/status/1231657192316690432)
