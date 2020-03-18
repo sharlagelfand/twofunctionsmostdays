@@ -2,6 +2,9 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+* 2020-03-18 [(tweet)](https://twitter.com/sharlagelfand/status/1240283656050089984)
+    * [rversions::r_oldrel()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/18#rversionsr_oldrel---i-know-this-one)
+    * [rversions::r_versions()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/18#rversionsr_versions---new-to-me)
 * 2020-03-17 [(tweet)](https://twitter.com/sharlagelfand/status/1240043718419329024)
     * [dplyr::bind_rows()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/17#dplyrbind_rows---i-know-this-one)
     * [dplyr::n_groups()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/17#dplyrn_groups---new-to-me)

@@ -1,0 +1,36 @@
+---
+title: "2020-03-18"
+output: github_document
+---
+
+# `rversions::r_oldrel()` - i know this one!
+
+```{r old, echo = TRUE}
+library(rversions)
+
+# When you submit a package to CRAN you need to say what environments and R versions you checked the package on
+# If you use Travis-CI, the versions are called oldrel and release - but who can keep track of what those actually are?!
+
+# Use r_oldrel() to see what version oldrel (the old release) is
+r_oldrel()
+
+# r_release() tells you what the current release is
+r_release()
+```
+
+# `rversions::r_versions()` - new to me!
+
+```{r new, echo = TRUE, message = FALSE}
+library(rversions)
+
+# r_versions() lists all R versions!
+versions <- r_versions()
+head(versions)
+
+# When did the nicknames start?
+# (psst: they're all Peanuts references https://livefreeordichotomize.com/2017/09/28/r-release-names/)
+library(dplyr)
+versions %>%
+  filter(!is.na(nickname)) %>%
+  filter(date == min(date))
+```
