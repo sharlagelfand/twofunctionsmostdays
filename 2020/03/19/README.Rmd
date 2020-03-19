@@ -1,0 +1,75 @@
+---
+title: "2020-03-19"
+output: github_document
+---
+
+# `dplyr::coalesce()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE}
+library(dplyr)
+
+# Have a data frame with some missing values?
+df <- tribble(
+  ~date, ~item, ~sales, ~store,
+  "2020-03-01", "apples", 1, NA_character_,
+  "2020-03-01", "bananas", NA_real_, "Loblaws"
+)
+
+df
+
+# Use coalesce() to quickly replace them
+df %>%
+  mutate(
+    sales = coalesce(sales, 0),
+    store = coalesce(store, "Unknown")
+  )
+
+# coalesce() finds the first non-missing value, so you can use it if you want to prioritize the values from columns
+tribble(
+  ~id, ~x_best_method, ~x_decent_method, ~x_last_ditch_effort,
+  1, 1, 1.05, 1.1,
+  2, NA_real_, 2.05, 2.2,
+  3, NA_real_, NA_real_, 3.3,
+  4, NA_real_, NA_real_, NA_real_
+) %>%
+  mutate(x_estimate = coalesce(x_best_method, x_decent_method, x_last_ditch_effort, 0))
+```
+
+# `tidyr::separate_rows()` - new to me!
+
+```{r new, echo = TRUE}
+library(tidyr)
+
+# If you have a column that's delimited and actually contains multiple values, like items
+df <- tribble(
+  ~date, ~items,
+  "2020-03-01", "apples, bananas, tofu",
+  "2020-03-02", "oats, cherries, bread"
+)
+
+# Use separate_rows to separate the column into multiple rows
+df %>%
+  separate_rows(items)
+
+# Detects the separator automatically, but sometimes that's not great!
+tribble(
+  ~date, ~items,
+  "2020-03-01; 2020-03-02", "apples, bananas, tofu; oats, cherries, bread"
+) %>%
+  separate_rows(date, items)
+
+# Set it yourself:
+tribble(
+  ~date, ~items,
+  "2020-03-01; 2020-03-02", "apples, bananas, tofu; oats, cherries, bread"
+) %>%
+  separate_rows(date, items, sep = "; ")
+
+# Chain some separate_rows together!
+tribble(
+  ~date, ~items,
+  "2020-03-01; 2020-03-02", "apples, bananas, tofu; oats, cherries, bread"
+) %>%
+  separate_rows(date, items, sep = "; ") %>%
+  separate_rows(items)
+```
