@@ -1,0 +1,43 @@
+---
+title: "2020-03-25"
+output: github_document
+---
+
+# `praise::praise()` - i know this one!
+
+```{r old, echo = TRUE}
+library(praise)
+
+# We all need some positive energy in our days, right?
+praise()
+praise()
+
+# Customize your own!
+praise("Ya done good, you ${adjective} human being!")
+praise("Oh ${EXCLAMATION} the code you write is truly ${ADJECTIVE}")
+```
+
+# `goodshirt::soul_squad()` - new to me!
+
+```{r new, echo = TRUE}
+# Available on github: devtools::install_github("adam-gruer/goodshirt")
+library(goodshirt)
+
+# Use soul_squad() to get a quote from a member of the soul squad
+# Probably Chidi, Eleanor, Jason, or Tahani?
+soul_squad()
+
+# Have a favourite character? Call on them directly!
+janet()
+
+# Need some ridiculousness in your day? Surely Derek can supply
+derek()
+
+# Want some namedropping?
+tahani()
+
+# Bisexual energy?
+eleanor()
+
+# And so on!
+```
