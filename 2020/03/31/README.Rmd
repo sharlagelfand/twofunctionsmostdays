@@ -1,0 +1,54 @@
+---
+title: "2020-03-31"
+output: github_document
+---
+
+# `lubridate::ymd()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE, error = TRUE}
+library(lubridate)
+
+# If you want to parse character dates/datetimes into a date that R can use
+# as.Date() doesn't always know what to do
+as.Date("20/01/01")
+
+# Use ymd() (year month day) and friends!
+ymd("20/01/01")
+
+# Got a weird order? All good!
+mdy(c("12-01-20", "06-06-06"))
+dym("12-12-12")
+
+# Works with times too!
+ymd_hms("2020-01-01 01:00:00")
+mdy_h("06/12/20 01") 
+
+# Errors if that formatting doesn't make sense or isn't possible, which is good!
+ymd("2020-24-06")
+```
+
+# `lubridate::stamp()` - new to me!
+
+```{r new, echo = TRUE}
+library(lubridate, warn.conflicts = FALSE)
+
+dates <- ymd(c("2020-01-01", "2020-03-30"))
+
+# Use stamp() to generate date formatting based on a template you supply
+# It creates a *function* that applies the formatting
+stamp("June 1, 2020")
+
+# Then use that function on dates
+stamp("June 1, 2020")(dates)
+
+# The informative messages are great but kind of annoying. 
+# Once you know the function works as you want, you can silence them:
+stamp("June 1, 2020", quiet = TRUE)(dates)
+
+# The template can include more than just the date components
+# Easter egg: that's my birthday
+stamp("This report was updated on the 24 day of June in 1991", quiet = TRUE)(dates)
+
+# It can extract the day of the week :O so smart
+stamp("January 2, 2020 was a Thursday", quiet = TRUE)(dates)
+```

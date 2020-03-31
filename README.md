@@ -2,6 +2,9 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+* 2020-03-31 [(tweet)](https://twitter.com/sharlagelfand/status/1244987516987588609)
+    * [lubridate::ymd()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/31#lubridateymd---i-know-this-one)
+    * [lubridate::stamp()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/31#lubridatestamp---new-to-me)
 * 2020-03-27 [(tweet)](https://twitter.com/sharlagelfand/status/1243644714102018048)
     * [forcats::fct_reorder()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/27#forcatsfct_reorder---i-know-this-one)
     * [forcats::fct_lump_*()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/03/27#forcatsfct_lump_*---new-to-me)
