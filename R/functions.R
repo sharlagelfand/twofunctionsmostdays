@@ -56,7 +56,7 @@ generate_function_links <- function(function_names, date = Sys.Date()) {
   paste0(base_link, "/", date_dir(date), "#", functions_link, suffix_link)
 }
 
-update_repo_readme <- function(date = Sys.Date(), tweet_link = NULL) {
+update_repo_readme <- function(tweet_link = NULL, date = Sys.Date()) {
   function_names <- get_function_names(date)
   function_links <- generate_function_links(function_names, date)
 
