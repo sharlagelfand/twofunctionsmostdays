@@ -120,15 +120,6 @@ acnh %>%
     ## 4 Top 8 Stylish Hair Colors  3000 Nook Miles
 
 ``` r
-# If you want a vector, use unglue_vec():
-acnh %>%
-  unglue_vec("{item} costs {price} {units}")
-```
-
-    ## [1] "Flimsy axe"                "DIY for beginners"        
-    ## [3] "Nook Miles Ticket"         "Top 8 Stylish Hair Colors"
-
-``` r
 # Plain unglue() returns a list:
 acnh %>%
   unglue("{item} costs {price} {units}")

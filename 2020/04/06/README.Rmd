@@ -72,10 +72,6 @@ acnh <- c(
 acnh %>%
   unglue_data("{item} costs {price} {units}")
 
-# If you want a vector, use unglue_vec():
-acnh %>%
-  unglue_vec("{item} costs {price} {units}")
-
 # Plain unglue() returns a list:
 acnh %>%
   unglue("{item} costs {price} {units}")
