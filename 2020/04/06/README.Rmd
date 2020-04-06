@@ -1,0 +1,82 @@
+---
+title: "2020-04-06"
+output: github_document
+---
+
+# `tidyr::hoist()` - i know this one!
+
+```{r old, echo = TRUE}
+library(tidyr)
+
+# Have list-cols?
+acnh <- tibble(
+  item = c("Flimsy axe", "DIY for beginners", "Nook Miles Ticket", "Top 8 Stylish Hair Colors"),
+  price = list(
+    list(n = 800,
+         units = "Bells"),
+    list(n = 480,
+         units = "Bells"),
+    list(n = 2000,
+         units = "Nook Miles"),
+    list(n = 3000,
+         units = "Nook Miles")
+  )
+)
+
+acnh
+
+# Use hoist() to extract components! You can do by name:
+acnh %>%
+  hoist(.col = price,
+        sale_price = "n",
+        sale_units = "units")
+
+# Or by index (works on unnamed lists!)
+acnh %>%
+  hoist(.col = price,
+        sale_price = 1)
+
+# Works well on deeply nested lists, too!
+acnh_deep <- tibble(
+  store = "Nook Stop:",
+  item = list(
+    list("Top 8 Pop Hair Styles",
+         price = list(n = 3000,
+                      units = "Nook Miles"))
+  )
+)
+
+acnh_deep
+
+acnh_deep %>%
+  hoist(item,
+    item_name = 1,
+    price = list("price", "n")
+  )
+```
+
+# `unglue::unglue_data()` new to me!
+
+```{r new, echo = TRUE}
+library(unglue)
+
+acnh <- c(
+  "Flimsy axe costs 800 bells",
+  "DIY for beginners costs 480 bells",
+  "Nook Miles Ticket costs 2000 Nook Miles",
+  "Top 8 Stylish Hair Colors costs 3000 Nook Miles"
+)
+
+# Extract matching values using a syntax like glue::glue()!
+# Byebye regex! (except you can use regex within if you want/need ok)
+acnh %>%
+  unglue_data("{item} costs {price} {units}")
+
+# If you want a vector, use unglue_vec():
+acnh %>%
+  unglue_vec("{item} costs {price} {units}")
+
+# Plain unglue() returns a list:
+acnh %>%
+  unglue("{item} costs {price} {units}")
+```
