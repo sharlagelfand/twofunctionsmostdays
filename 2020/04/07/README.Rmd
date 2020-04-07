@@ -1,0 +1,72 @@
+---
+title: "2020-04-07"
+output: github_document
+---
+
+# `purrr::map_dfr()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE}
+library(purrr)
+library(dplyr)
+
+acnh_critters <- list(
+  Fish = tribble(
+    ~name, ~location,
+    "Crucian carp", "River",
+    "Dace", "River",
+    "Dab", "Sea"),
+  Bug = tribble(
+    ~name, ~location,
+    "Common butterfly", "Flying",
+    "Bagworm", "Shaking Trees")
+)
+
+# Use map_dfr() to apply a function to the list then row-bind the results
+# Apply the function using regulat purrr syntax - many options!
+acnh_critters %>%
+  map_dfr(count, location)
+
+# Use the .id argument to assign the list element name to a column
+acnh_critters %>%
+  map_dfr(count, location, .id = "type")
+
+# Also useful if you have a list of things you want to convert to tibbles!
+list(
+  Fish = c("Crucian carp", "Dace", "Dab"),
+  Bug = c("Common butterfly", "Bagworm")
+  ) %>%
+  map_dfr(~ as_tibble(.x) %>% rename(name = value), .id = "type")
+```
+
+# `purrr::keep()` - new to me!
+
+```{r new, echo = TRUE}
+library(purrr)
+
+acnh_critters <- list(
+  Fish = tribble(
+    ~name, ~location,
+    "Crucian carp", "River",
+    "Dace", "River",
+    "Dab", "Sea"
+  ),
+
+  Bug = tribble(
+    ~name, ~location,
+    "Common butterfly", "Flying",
+    "Bagworm", "Shaking Trees"
+  )
+)
+
+# Use keep() on a list or vector to keep elements matching a specific criteria
+acnh_critters %>%
+  keep(~ nrow(.x) == 3)
+
+# discard() is the inverse!
+acnh_critters %>%
+  discard(~ nrow(.x) == 3)
+
+# compact() is a special case of discard() that removes NULL or zero length elements
+list(a = 1, b = NULL, c = character()) %>%
+  compact()
+```

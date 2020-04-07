@@ -2,6 +2,9 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+* 2020-04-07 [(tweet)](https://twitter.com/sharlagelfand/status/1247630105796661259)
+    * [purrr::map_dfr()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/07#purrrmap_dfr---i-know-this-one)
+    * [purrr::keep()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/07#purrrkeep---new-to-me)
 * 2020-04-06 [(tweet)](https://twitter.com/sharlagelfand/status/1247233768584294400)
     * [tidyr::hoist()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/06#tidyrhoist---i-know-this-one)
     * [unglue::unglue_data()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/06#unglueunglue_data---new-to-me)
