@@ -1,0 +1,45 @@
+2020-04-13
+================
+
+# `usethis::use_r()` - i know this one\!
+
+``` r
+library(usethis)
+library(fs)
+
+# use_r() creates a new file in the R/ directory of a package
+# (Or goes to the file if it already exists!)
+
+# Check the directory first
+dir_ls("R")
+## R/functions.R
+
+# Run use_r()
+use_r("new_function")
+## ✓ Setting active project to '/Users/sharla/github/twofunctionsmostdays'
+## ● Modify 'R/new_function.R'
+## ● Call `use_test()` to create a matching test file
+
+# Check it again!
+dir_ls("R")
+## R/functions.R    R/new_function.R 
+
+# Create a corresponding test with use_test()!
+# Psst... don't need to specify "new_function" if you have the R file open!
+use_test("new_function")
+## ✓ Writing 'tests/testthat/test-new_function.R'
+## ● Modify 'tests/testthat/test-new_function.R'
+```
+
+# `usethis::rename_files()` - new to me\!
+
+``` r
+library(usethis)
+
+# Need to rename the function and test file?
+
+# Don't need to do it manually anymore! Use rename_files!()
+rename_files("new_function", "new_function_new_name")
+# ✓ Moving 'R/new_function.R' to 'R/new_function_new_name.R'
+# ✓ Moving 'tests/testthat/test-new_function.R' to 'tests/testthat/test-new_function_new_name.R'
+```
