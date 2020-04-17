@@ -1,0 +1,98 @@
+2020-04-16
+================
+
+# `ggplot2::position_dodge2()` - i know this one\!
+
+``` r
+library(ggplot2)
+library(tibble)
+
+theme_set(theme_minimal(16))
+
+nintendo_sales <- tribble(
+  ~console, ~sales_type, ~sales_million,
+  "Nintendo Switch", "Hardware", 52.48,
+  "Nintendo Switch", "Software", 310.65,
+  "Nintendo DS", "Hardware", 154.02,
+  "Nintendo DS", "Software", 948.69,
+  "Game Boy", "Hardware", 118.69,
+  "Game Boy", "Software", 501.11,
+  "Nintendo 64", "Hardware", 32.93,
+  "Nintendo 64", "Software", 224.97,
+  "SNES", "Hardware", 49.10,
+  "SNES", "Software", 379.06
+)
+
+# Want to do a grouped bar chart, but hate stacked?
+ggplot(nintendo_sales, aes(x = sales_million, y = console, fill = sales_type)) +
+  geom_col()
+```
+
+<img src="README_files/figure-gfm/old-1.png" width="75%" />
+
+``` r
+# Yuck! Set `position = position_dodge2()` to place the bars side by side
+ggplot(nintendo_sales, aes(x = sales_million, y = console, fill = sales_type)) +
+  geom_col(position = position_dodge2())
+```
+
+<img src="README_files/figure-gfm/old-2.png" width="75%" />
+
+``` r
+# Gives some "padding" by default, but you can turn that off by setting `padding = 0`
+```
+
+# `ggplot2::guide_legend()` - new to me\!
+
+``` r
+library(ggplot2)
+library(tibble)
+
+theme_set(theme_minimal(16))
+
+nintendo_sales <- tribble(
+  ~console, ~sales_type, ~sales_million,
+  "Nintendo Switch", "Hardware", 52.48,
+  "Nintendo Switch", "Software", 310.65,
+  "Nintendo DS", "Hardware", 154.02,
+  "Nintendo DS", "Software", 948.69,
+  "Game Boy", "Hardware", 118.69,
+  "Game Boy", "Software", 501.11,
+  "Nintendo 64", "Hardware", 32.93,
+  "Nintendo 64", "Software", 224.97,
+  "SNES", "Hardware", 49.10,
+  "SNES", "Software", 379.06
+)
+
+# Want to easily update parts of the legend? Use guide_legend() within guides()!
+ggplot(nintendo_sales, aes(x = sales_million, y = console, fill = sales_type)) +
+  geom_col() +
+  guides(fill = guide_legend(
+    title = "Sales Type", # Change the title
+    title.hjust = 1, # Left align the title (why? because you can)
+    keyheight = 2 # Even change the size of the boxes!
+  )) 
+```
+
+<img src="README_files/figure-gfm/new-1.png" width="75%" />
+
+``` r
+# Tons more options!
+
+# For a continuous colour legend, use guide_colourbar():
+library(dplyr)
+nintendo_sales %>%
+  filter(sales_type == "Hardware") %>%
+  ggplot(aes(x = sales_million, y = console, fill = sales_million)) +
+  geom_col() +
+  guides(fill = guide_colorbar(
+    title = NULL, # Remove the title!
+    ticks = FALSE # Remove the ticks!
+  ))
+```
+
+<img src="README_files/figure-gfm/new-2.png" width="75%" />
+
+``` r
+# Psst: have multiple legends and want to change the order? Set `order` in each of them, but avoid 0, decides by a ~secret algorithm~
+```

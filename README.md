@@ -2,6 +2,9 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+* 2020-04-16 [(tweet)](https://twitter.com/sharlagelfand/status/1250960095804035072)
+    * [ggplot2::position_dodge2()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/16#ggplot2position_dodge2---i-know-this-one)
+    * [ggplot2::guide_legend()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/16#ggplot2guide_legend---new-to-me)
 * 2020-04-13 [(tweet)](https://twitter.com/sharlagelfand/status/1249728932955512833)
     * [usethis::use_r()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/13#usethisuse_r---i-know-this-one)
     * [usethis::rename_files()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/13#usethisrename_files---new-to-me)
