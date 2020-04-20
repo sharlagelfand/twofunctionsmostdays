@@ -1,0 +1,68 @@
+---
+title: "2020-04-20"
+output: github_document
+always_allow_html: true
+---
+
+# `kableExtra::add_header_above()` - i know this one!
+
+```{r old, echo = TRUE}
+library(kableExtra)
+library(tibble)
+
+nintendo_sales <- tribble(
+  ~console, ~hardware_sales, ~software_sales,
+  "Nintendo Switch", 52.48, 310.65,
+  "Wii", 101.63, 921.41,
+  "Nintendo DS", 154.02, 948.69,
+  "Game Boy", 118.69, 501.11,
+  "Nintendo 64", 32.93, 224.97,
+  "SNES", 49.1, 379.06,
+  "Other Consoles", 254.43, 1571.23
+)
+
+# Use kable() to create a table, and add_header_above() to create a top header spanning the last two columns!
+nintendo_sales %>%
+  kable(col.names = c("Console", "Hardware", "Software")) %>%
+  add_header_above(header = c(" " = 1, "Sales (millions)" = 2))
+```
+
+# `kableExtra::cell_spec()` - new to me!
+
+```{r new, echo = TRUE, warning = FALSE, message = FALSE}
+library(kableExtra)
+library(tibble)
+
+nintendo_sales <- tribble(
+  ~console, ~hardware_sales, ~software_sales,
+  "Nintendo Switch", 52.48, 310.65,
+  "Wii", 101.63, 921.41,
+  "Nintendo DS", 154.02, 948.69,
+  "Game Boy", 118.69, 501.11,
+  "Nintendo 64", 32.93, 224.97,
+  "SNES", 49.1, 379.06,
+  "Other Consoles", 254.43, 1571.23
+)
+
+# Say we want to create a table where sales are coloured by their value
+# Use cell_spec() to set the colour first. It'll convert that cell to HTML (or latex if you're writing to PDF)
+library(dplyr)
+
+nintendo_sales_colour <- nintendo_sales %>%
+  mutate_at(
+    vars(contains("_sales")),
+    ~ case_when(
+      .x < 100 ~ cell_spec(.x, format = "html", background = "#ffded7"),
+      .x < 500 ~ cell_spec(.x, format = "html", background = "#ffcec4"),
+      TRUE ~ cell_spec(.x, format = "html", background = "#ffbdb0")
+    )
+  )
+
+nintendo_sales_colour
+
+# Then pass to kable(), which will handle the rest!
+# Just remember to set `escape = FALSE` so it treats the HTML as HTML, and not regular text!
+nintendo_sales_colour %>%
+  kable(col.names = c("Console", "Hardware", "Software"),
+        escape = FALSE)
+```
