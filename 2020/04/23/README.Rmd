@@ -1,0 +1,63 @@
+---
+title: "2020-04-23"
+output: github_document
+always_allow_html: true
+---
+
+# `kableExtra::row_spec()` - i know this one!
+
+```{r old, echo = TRUE}
+library(kableExtra)
+library(tibble)
+
+nintendo_sales <- tribble(
+  ~console, ~hardware_sales, ~software_sales,
+  "Nintendo Switch", 52.48, 310.65,
+  "Wii", 101.63, 921.41,
+  "Nintendo DS", 154.02, 948.69,
+  "Game Boy", 118.69, 501.11,
+  "Nintendo 64", 32.93, 224.97,
+  "SNES", 49.1, 379.06,
+  "Other Consoles", 254.43, 1571.23,
+  "Total", 763.28, 4857.12
+)
+
+# Apply formatting to specified rows via row_spec()!
+nintendo_sales %>%
+  kable(col.names = c("Console", "Hardware", "Software")) %>%
+  row_spec(
+    row = nrow(nintendo_sales), # Formatting the last row
+    bold = TRUE
+  )
+```
+
+# `kableExtra::magic_mirror()` - new to me!
+
+```{r new, echo = TRUE}
+library(kableExtra)
+library(tibble)
+
+nintendo_sales <- tribble(
+  ~console, ~hardware_sales, ~software_sales,
+  "Nintendo Switch", 52.48, 310.65,
+  "Wii", 101.63, 921.41,
+  "Nintendo DS", 154.02, 948.69,
+  "Game Boy", 118.69, 501.11,
+  "Nintendo 64", 32.93, 224.97,
+  "SNES", 49.1, 379.06,
+  "Other Consoles", 254.43, 1571.23
+)
+
+# Create a table
+k <- nintendo_sales %>%
+  kable(
+    col.names = c("Console", "Hardware", "Software"),
+    caption = "Nintendo console sales, as of December 31, 2019"
+  ) %>%
+  add_header_above(header = c(" ", "Sales (millions)" = 2))
+
+k
+
+# Use magic_mirror() to see attributes of it, like the caption, column names, number of columns and names, number of header rows (two here!)
+magic_mirror(k)
+```
