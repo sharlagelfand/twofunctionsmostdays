@@ -1,0 +1,75 @@
+---
+title: "2020-04-24"
+output: github_document
+always_allow_html: true
+---
+
+# `kableExtra::kable_styling()` - i know this one!
+
+```{r old, echo = TRUE}
+library(kableExtra)
+library(tibble)
+
+nintendo_sales <- tribble(
+  ~console, ~hardware_sales, ~software_sales,
+  "Nintendo Switch", 52.48, 310.65,
+  "Wii", 101.63, 921.41,
+  "Nintendo DS", 154.02, 948.69,
+  "Game Boy", 118.69, 501.11,
+  "Nintendo 64", 32.93, 224.97,
+  "SNES", 49.1, 379.06,
+  "Other Consoles", 254.43, 1571.23
+)
+
+# Use kable_styling() to... style a kable!
+nintendo_sales %>%
+  kable(col.names = c("Console", "Hardware", "Software")) %>%
+  kable_styling(
+    full_width = TRUE, # Make the table full width
+    font_size = 20 # Change the font size
+  )
+
+# More options available, especially for PDF output (LaTeX tables)!
+```
+
+# `kableExtra::footnote()` - new to me!
+
+```{r new, echo = TRUE, message = FALSE, warning = FALSE}
+library(tibble)
+
+nintendo_sales <- tribble(
+  ~console, ~hardware_sales, ~software_sales,
+  "Nintendo Switch", 52.48, 310.65,
+  "Wii", 101.63, 921.41,
+  "Nintendo DS", 154.02, 948.69,
+  "Game Boy", 118.69, 501.11,
+  "Nintendo 64", 32.93, 224.97,
+  "SNES", 49.1, 379.06,
+  "Other Consoles", 254.43, 1571.23
+)
+
+# You can include information in a footnote, using footnote()!
+
+nintendo_sales %>%
+  kable(col.names = c("Console", "Hardware", "Software")) %>%
+  footnote(general = "Data as of December 31, 2019.")
+
+# If you want to add a footnote about a specific value - for example, what on earth is contained in "Other Consoles"?! - you need to change the value beforehand using a footnote_marker_*() function
+library(dplyr)
+nintendo_sales <- nintendo_sales %>%
+  mutate(console = ifelse(console == "Other Consoles",
+    paste0(console, footnote_marker_symbol(1)),
+    console
+  ))
+
+nintendo_sales[["console"]][[7]]
+
+# Then supply the footnote in footnote()!
+# Remember to set `escape = FALSE` so it treats the footnote special characters HTML/LaTeX and not regular text!
+nintendo_sales %>%
+  kable(
+    col.names = c("Console", "Hardware", "Software"),
+    escape = FALSE
+  ) %>%
+  footnote(symbol = "'Other Consoles' includes: Nintendo 3DS, Wii U, Game Boy Advance, Nintendo GameCube, and NES.")
+```
