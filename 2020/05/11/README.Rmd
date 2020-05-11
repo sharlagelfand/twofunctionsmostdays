@@ -1,0 +1,68 @@
+---
+title: "2020-05-11"
+output: github_document
+---
+
+# `gt::fmt_number()` - i know this one!
+
+```{r old, echo = TRUE, warning = FALSE, message = FALSE}
+library(gt)
+library(tibble)
+
+acnh_bugs_n <- tribble(
+  ~name, ~price, ~location, ~time, ~months,
+  "Yellow butterfly", 160, "Flying", "4 AM - 7 PM", "Mar - Jun, Sep - Oct",
+  "Peacock butterfly", 2500, "Flying by Hybrid Flowers", "4 AM - 7 PM", "Mar - June",
+  "Atlas moth", 3000, "On Trees", "7 PM - 4 AM", "Apr - Sep",
+  "Centipede", 300, "Hitting Rocks", "4 PM - 11 PM", "Sep - June",
+  "Snail", 250, "On Rocks and Bushes (Rain)	", "All Day", "Jan - Dec",
+  "Mole cricket", 500, "Underground", "All Day", "Nov - May"
+)
+
+# Use gt() to make a basic table
+acnh_bugs_n %>%
+  gt()
+
+# Format numbers using fmt_number() and supplying the columns
+# We don't need any decimals, so I'm dropping the decimals - defaults to 2!
+acnh_bugs_n %>%
+  gt() %>%
+  fmt_number(
+    columns = vars(price),
+    decimals = 0
+  )
+
+# If you're using a real currency (i.e. not Bells from Animal Crossing), could easily use fmt_currency() instead!
+acnh_bugs_n %>%
+  gt() %>%
+  fmt_currency(
+    columns = vars(price),
+    currency = "CAD",
+    decimals = 0
+  )
+```
+
+# `gt::tab_spanner()` - new to me!
+
+```{r new, echo = TRUE}
+library(gt)
+library(tibble)
+
+acnh_bugs_n <- tribble(
+  ~name, ~price, ~location, ~time, ~months,
+  "Yellow butterfly", 160, "Flying", "4 AM - 7 PM", "Mar - Jun, Sep - Oct",
+  "Peacock butterfly", 2500, "Flying by Hybrid Flowers", "4 AM - 7 PM", "Mar - June",
+  "Atlas moth", 3000, "On Trees", "7 PM - 4 AM", "Apr - Sep",
+  "Centipede", 300, "Hitting Rocks", "4 PM - 11 PM", "Sep - June",
+  "Snail", 250, "On Rocks and Bushes (Rain)	", "All Day", "Jan - Dec",
+  "Mole cricket", 500, "Underground", "All Day", "Nov - May"
+)
+
+# Add a header "Availability" above the time and months columns using tab_spanner(), which creates a "spanner" column label over existing columns
+acnh_bugs_n %>%
+  gt() %>%
+  tab_spanner(
+    label = "Availability",
+    columns = vars(time, months)
+  )
+```

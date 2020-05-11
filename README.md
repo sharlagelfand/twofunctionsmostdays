@@ -2,6 +2,9 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+* 2020-05-11 [(tweet)](https://twitter.com/sharlagelfand/status/1259883334383132672)
+    * [gt::fmt_number()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/05/11#gtfmt_number---i-know-this-one)
+    * [gt::tab_spanner()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/05/11#gttab_spanner---new-to-me)
 * 2020-04-24 [(tweet)](https://twitter.com/sharlagelfand/status/1253778948015742978)
     * [kableExtra::kable_styling()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/24#kableExtrakable_styling---i-know-this-one)
     * [kableExtra::footnote()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/04/24#kableExtrafootnote---new-to-me)
