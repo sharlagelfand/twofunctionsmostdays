@@ -1,0 +1,52 @@
+---
+title: "2020-05-12"
+output: github_document
+---
+
+# `gt::tab_header()` - i know this one!
+
+```{r old, echo = TRUE, message = FALSE, warning = FALSE}
+library(gt)
+library(tibble)
+
+acnh_bugs_n <- tribble(
+  ~name, ~price, ~location, ~time, ~months,
+  "Yellow butterfly", 160, "Flying", "4 AM - 7 PM", "Mar - Jun, Sep - Oct",
+  "Peacock butterfly", 2500, "Flying by Hybrid Flowers", "4 AM - 7 PM", "Mar - June",
+  "Atlas moth", 3000, "On Trees", "7 PM - 4 AM", "Apr - Sep",
+  "Centipede", 300, "Hitting Rocks", "4 PM - 11 PM", "Sep - June",
+  "Snail", 250, "On Rocks and Bushes (Rain)	", "All Day", "Jan - Dec",
+  "Mole cricket", 500, "Underground", "All Day", "Nov - May"
+)
+
+# Add a header (title and/or subtitle) to the table with tab_header()
+acnh_bugs_n %>%
+  gt() %>%
+  tab_header(
+    title = "Animal Crossing New Horizons Critters",
+    subtitle = "(Availability based on Northern Hemisphere)"
+  )
+```
+
+# `gt::tab_options()` - new to me!
+
+```{r new, echo = TRUE}
+library(gt)
+library(tibble)
+
+acnh_bugs_n <- tribble(
+  ~name, ~price, ~location, ~time, ~months,
+  "Yellow butterfly", 160, "Flying", "4 AM - 7 PM", "Mar - Jun, Sep - Oct",
+  "Peacock butterfly", 2500, "Flying by Hybrid Flowers", "4 AM - 7 PM", "Mar - June",
+  "Atlas moth", 3000, "On Trees", "7 PM - 4 AM", "Apr - Sep",
+  "Centipede", 300, "Hitting Rocks", "4 PM - 11 PM", "Sep - June",
+  "Snail", 250, "On Rocks and Bushes (Rain)	", "All Day", "Jan - Dec",
+  "Mole cricket", 500, "Underground", "All Day", "Nov - May"
+)
+
+# A *ton* of options are available via tab_options()!
+# I want to capitalize the column labels (without having to alter the underlying data)
+acnh_bugs_n %>%
+  gt() %>%
+  tab_options(column_labels.text_transform = "capitalize")
+```
