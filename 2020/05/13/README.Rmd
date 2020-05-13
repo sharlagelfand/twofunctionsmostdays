@@ -1,0 +1,72 @@
+---
+title: "2020-05-13"
+output: github_document
+---
+
+# `gt::tab_style()` - i know this one!
+
+```{r old, echo = TRUE, warning = FALSE}
+library(gt)
+library(tibble)
+
+acnh_bugs_n <- tribble(
+  ~name, ~price, ~location, ~time, ~months,
+  "Yellow butterfly", 160, "Flying", "4 AM - 7 PM", "Mar - Jun, Sep - Oct",
+  "Peacock butterfly", 2500, "Flying by Hybrid Flowers", "4 AM - 7 PM", "Mar - June",
+  "Atlas moth", 3000, "On Trees", "7 PM - 4 AM", "Apr - Sep",
+  "Centipede", 300, "Hitting Rocks", "4 PM - 11 PM", "Sep - June",
+  "Snail", 250, "On Rocks and Bushes (Rain)	", "All Day", "Jan - Dec",
+  "Mole cricket", 500, "Underground", "All Day", "Nov - May"
+)
+
+# You can add custom styles to a table using tab_styles()
+# I want to bold the column labels - first specify that the style is a *text* style, with bold weight
+# Then specify the locations - we are styling the column labels, for every column
+acnh_bugs_n %>%
+  gt() %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(columns = everything())
+  )
+
+# Could also style using cell_fill() (the cell background color) or cell_borders() (the cell borders)
+# And locations can vary too! Use cells_body() to target specific columns/rows
+acnh_bugs_n %>%
+  gt() %>%
+  tab_style(
+    style = cell_fill(color = "pink", alpha = 0.5),
+    locations = cells_body(
+      columns = vars(time),
+      rows = time == "All Day"
+    )
+  )
+```
+
+# `gt::cells_column_spanners()` - new to me!
+
+```{r new, echo = TRUE}
+library(gt)
+library(tibble)
+
+acnh_bugs_n <- tribble(
+  ~name, ~price, ~location, ~time, ~months,
+  "Yellow butterfly", 160, "Flying", "4 AM - 7 PM", "Mar - Jun, Sep - Oct",
+  "Peacock butterfly", 2500, "Flying by Hybrid Flowers", "4 AM - 7 PM", "Mar - June",
+  "Atlas moth", 3000, "On Trees", "7 PM - 4 AM", "Apr - Sep",
+  "Centipede", 300, "Hitting Rocks", "4 PM - 11 PM", "Sep - June",
+  "Snail", 250, "On Rocks and Bushes (Rain)	", "All Day", "Jan - Dec",
+  "Mole cricket", 500, "Underground", "All Day", "Nov - May"
+)
+
+# Create a table with a spanner label "Availability" across the time and months variables
+# Then, bold it and refer to that header specfically by using cells_column_spanners()
+gt(acnh_bugs_n) %>%
+  tab_spanner(
+    label = "Availability",
+    columns = vars(time, months)
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_spanners("Availability")
+  )
+```
