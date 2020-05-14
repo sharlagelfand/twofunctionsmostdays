@@ -2,3 +2,4 @@ Package: twofunctionsmostdays
 Version: 0.0.0.9000
 Suggests: 
     testthat
+RoxygenNote: 7.1.0
