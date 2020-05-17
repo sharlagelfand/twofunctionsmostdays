@@ -2,6 +2,8 @@ Sharing two #rstats functions most days - one I know and love, and one that's ne
 
 All code screenshots are made using [Carbon](https://carbon.now.sh/).
 
+* 2020-05-17 [(tweet)](https://twitter.com/sharlagelfand/status/1262104557519331328)
+    * {gt} wrapup
 * 2020-05-16 [(tweet)](https://twitter.com/sharlagelfand/status/1261670184860909573)
     * [gt::web_image()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/05/16#gtweb_image---i-know-this-one)
     * [gt::cols_move_to_start()](https://github.com/sharlagelfand/twofunctionsmostdays/tree/master/2020/05/16#gtcols_move_to_start---new-to-me)
